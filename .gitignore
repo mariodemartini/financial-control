@@ -1,0 +1,16 @@
+# Maven
+/target
+
+# IDE
+/.idea
+*.iml
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+
+# Env / configs locais
+/application.properties
+/application.yml
