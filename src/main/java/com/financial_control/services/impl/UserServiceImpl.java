@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserResponseDTO findByEmail(String email) {
         Optional<UserEntity> userEntity = userRepository.findByEmail(email);
-        return userEntity.map(userEntity1 -> userMapper.toDTO(userEntity1)).orElse(null);
+        return userEntity.map(userEntity1 -> userMapper.toDTO(userEntity1)).orElseThrow();
     }
 
     @Override
