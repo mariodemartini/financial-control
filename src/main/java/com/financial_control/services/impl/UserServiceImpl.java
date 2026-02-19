@@ -7,14 +7,12 @@ import com.financial_control.mappers.UserMapper;
 import com.financial_control.repositories.UserRepository;
 import com.financial_control.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
-
-import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -44,6 +42,12 @@ public class UserServiceImpl implements UserService {
     public UserResponseDTO findById(Long Id) {
         UserEntity entity = userRepository.findById(Id).orElseThrow();
         return userMapper.toDTO(entity);
+    }
+
+    @Override
+    public UserResponseDTO findByEmail(String email) {
+        Optional<UserEntity> userEntity = userRepository.findByEmail(email);
+        return userEntity.map(userEntity1 -> userMapper.toDTO(userEntity1)).orElse(null);
     }
 
     @Override

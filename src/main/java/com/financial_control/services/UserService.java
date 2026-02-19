@@ -11,6 +11,7 @@ public interface UserService {
     UserResponseDTO createUser(UserRequestDTO user);
     UserResponseDTO updateUser(Long Id, UserRequestDTO user);
     UserResponseDTO findById(Long Id);
+    UserResponseDTO findByEmail(String email);
     List<UserResponseDTO> getAll();
     void deleteById(Long Id);
 
