@@ -31,16 +31,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserResponseDTO updateUser(Long Id, UserRequestDTO user) {
+    public UserResponseDTO updateUser(Long id, UserRequestDTO user) {
         UserEntity entity = userMapper.toEntity(user);
-        entity.setId(Id);
+        entity.setId(id);
         UserEntity updated = userRepository.save(entity);
         return userMapper.toDTO(updated);
     }
 
     @Override
-    public UserResponseDTO findById(Long Id) {
-        UserEntity entity = userRepository.findById(Id).orElseThrow();
+    public UserResponseDTO findById(Long id) {
+        UserEntity entity = userRepository.findById(id).orElseThrow();
         return userMapper.toDTO(entity);
     }
 
