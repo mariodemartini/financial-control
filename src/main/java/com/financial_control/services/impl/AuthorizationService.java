@@ -26,15 +26,11 @@ public class AuthorizationService implements UserDetailsService {
     public UserEntity getAuthenticatedUser() {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        String email;
-        if (principal instanceof UserDetails) {
-            email = ((UserDetails)principal).getUsername();
-        } else {
-            email = principal.toString();
+        if (principal instanceof UserEntity) {
+            return (UserEntity) principal;
         }
 
-        return userRepository.findByEmail(email)
-                .orElseThrow(() -> new RuntimeException("Usuário logado não encontrado no banco"));
+        throw new RuntimeException("Usuário não está autenticado corretamente");
     }
 
 }

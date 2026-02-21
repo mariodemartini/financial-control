@@ -6,7 +6,6 @@ import com.financial_control.entities.CategoryEntity;
 import com.financial_control.entities.UserEntity;
 import com.financial_control.mappers.CategoryMapper;
 import com.financial_control.repositories.CategoryRepository;
-import com.financial_control.repositories.UserRepository;
 import com.financial_control.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,7 +39,7 @@ public class CategoryServiceImpl implements CategoryService {
     public CategoryResponseDTO findById(Long id) {
         UserEntity user = authorizationService.getAuthenticatedUser();
 
-        CategoryEntity category = categoryRepository.findByIdAndUser(id, user)
+        CategoryEntity category = categoryRepository.findByIdAndUser(id, user.getId())
                 .orElseThrow(() -> new RuntimeException("Categoria não encontrada ou acesso negado"));
 
         return categoryMapper.toDTO(category);
@@ -50,7 +49,7 @@ public class CategoryServiceImpl implements CategoryService {
     public List<CategoryResponseDTO> findAll() {
         UserEntity user = authorizationService.getAuthenticatedUser();
 
-        return categoryRepository.findByUser(user)
+        return categoryRepository.findByUser(user.getId())
                 .stream()
                 .map(categoryMapper::toDTO)
                 .toList();
@@ -76,7 +75,7 @@ public class CategoryServiceImpl implements CategoryService {
     public void deleteById(Long id) {
         UserEntity user = authorizationService.getAuthenticatedUser();
 
-        CategoryEntity category = categoryRepository.findByIdAndUser(id, user)
+        CategoryEntity category = categoryRepository.findByIdAndUser(id, user.getId())
                 .orElseThrow(() -> new RuntimeException("Não encontrado"));
 
         categoryRepository.delete(category);

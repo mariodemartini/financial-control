@@ -33,7 +33,6 @@ public class TokenServiceImpl implements TokenService {
         }
     }
 
-    @Override
     public String validateToken(String token) {
         try {
             Algorithm algorithm = Algorithm.HMAC256(secret);
@@ -43,12 +42,12 @@ public class TokenServiceImpl implements TokenService {
                     .verify(token)
                     .getSubject();
         } catch (JWTVerificationException exception) {
-            return ""; // Retorna vazio se o token for inválido
+            return "";
         }
     }
 
     private Instant genExpirationDate() {
-        return LocalDateTime.now().plusHours(2).toInstant(ZoneOffset.of("-03:00"));
+        return LocalDateTime.now().plusHours(4).toInstant(ZoneOffset.of("-03:00"));
     }
 
 }
