@@ -16,6 +16,7 @@ public class CardsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
     private String lastNumbers;
     private Integer closingDay;

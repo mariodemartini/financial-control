@@ -19,10 +19,12 @@ public class CardsMapper {
                 .dueDay(dto.getDueDay())
                 .user(user) // Associa o dono do cartão aqui
                 .build();
+
         return cardsEntity;
     }
 
     public CardsResponseDTO toDTO(CardsEntity entity) {
+
         return CardsResponseDTO.builder()
                 .id(entity.getId())
                 .name(entity.getName())

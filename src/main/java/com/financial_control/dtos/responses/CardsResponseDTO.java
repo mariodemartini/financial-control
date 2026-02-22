@@ -17,4 +17,5 @@ public class CardsResponseDTO {
     private Integer closingDay;
     private Integer dueDay;
 
+
 }

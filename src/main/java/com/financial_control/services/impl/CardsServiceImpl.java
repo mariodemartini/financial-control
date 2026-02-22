@@ -72,6 +72,7 @@ public class CardsServiceImpl implements CardsService {
 
     }
 
+
     @Override
     public void deleteCard(Long id) {
         UserEntity user = authorizationService.getAuthenticatedUser();
