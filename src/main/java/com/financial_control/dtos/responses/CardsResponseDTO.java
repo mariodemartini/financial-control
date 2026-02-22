@@ -1,17 +1,20 @@
 package com.financial_control.dtos.responses;
 
-import com.financial_control.entities.enums.PaymentTypeEnum;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class PaymentMethodResponseDTO {
+public class CardsResponseDTO {
 
     private Long id;
     private String name;
-    private PaymentTypeEnum paymentTypeEnum;
+    private String lastNumbers;
+    private Integer closingDay;
+    private Integer dueDay;
 
 }
