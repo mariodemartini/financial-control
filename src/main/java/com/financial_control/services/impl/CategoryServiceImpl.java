@@ -39,7 +39,7 @@ public class CategoryServiceImpl implements CategoryService {
     public CategoryResponseDTO findById(Long id) {
         UserEntity user = authorizationService.getAuthenticatedUser();
 
-        CategoryEntity category = categoryRepository.findByIdAndUser(id, user.getId())
+        CategoryEntity category = categoryRepository.findByIdAndUserId(id, user.getId())
                 .orElseThrow(() -> new RuntimeException("Categoria não encontrada ou acesso negado"));
 
         return categoryMapper.toDTO(category);
@@ -49,7 +49,7 @@ public class CategoryServiceImpl implements CategoryService {
     public List<CategoryResponseDTO> findAll() {
         UserEntity user = authorizationService.getAuthenticatedUser();
 
-        return categoryRepository.findByUser(user.getId())
+        return categoryRepository.findByUserId(user.getId())
                 .stream()
                 .map(categoryMapper::toDTO)
                 .toList();
@@ -75,7 +75,7 @@ public class CategoryServiceImpl implements CategoryService {
     public void deleteById(Long id) {
         UserEntity user = authorizationService.getAuthenticatedUser();
 
-        CategoryEntity category = categoryRepository.findByIdAndUser(id, user.getId())
+        CategoryEntity category = categoryRepository.findByIdAndUserId(id, user.getId())
                 .orElseThrow(() -> new RuntimeException("Não encontrado"));
 
         categoryRepository.delete(category);
