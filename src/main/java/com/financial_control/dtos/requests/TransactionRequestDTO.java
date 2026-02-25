@@ -1,0 +1,30 @@
+package com.financial_control.dtos.requests;
+
+import com.financial_control.entities.CardsEntity;
+import com.financial_control.entities.CategoryEntity;
+import com.financial_control.entities.enums.PaymentTypeEnum;
+import com.financial_control.entities.enums.StatusEnum;
+import com.financial_control.entities.enums.TransactionTypeEnum;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class TransactionRequestDTO {
+
+    private String description;
+    private BigDecimal amount;
+    private LocalDate transactionDate;
+    private PaymentTypeEnum paymentType;
+    private Integer numberOfInstallments;
+    private TransactionTypeEnum transactionType;
+    private StatusEnum status;
+    private Long categoryId;
+    private Long cardId;
+
+}
