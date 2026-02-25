@@ -12,15 +12,15 @@ import org.springframework.stereotype.Component;
 public class CardsMapper {
 
     public CardsEntity toEntity(CardsRequestDTO dto, UserEntity user) {
-        CardsEntity cardsEntity = CardsEntity.builder()
+
+        return CardsEntity.builder()
                 .name(dto.getName())
                 .lastNumbers(dto.getLastNumbers())
                 .closingDay(dto.getClosingDay())
                 .dueDay(dto.getDueDay())
-                .user(user) // Associa o dono do cartão aqui
+                .user(user)
                 .build();
 
-        return cardsEntity;
     }
 
     public CardsResponseDTO toDTO(CardsEntity entity) {
