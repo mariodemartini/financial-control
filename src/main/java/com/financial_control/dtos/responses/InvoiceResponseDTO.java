@@ -16,7 +16,7 @@ import java.time.LocalDate;
 public class InvoiceResponseDTO {
 
     private Long id;
-    private Long cardId;
+    private String cardName;
     private LocalDate referenceMonth;
     private BigDecimal totalAmount;
     private StatusEnum status;
