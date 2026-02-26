@@ -25,6 +25,7 @@ public class TransactionEntity {
     private String description;
     private BigDecimal amount;
     private LocalDate transactionDate;
+    private LocalDate paymentDate;
     private PaymentTypeEnum  paymentType;
     private Integer numberOfInstallments;
     private TransactionTypeEnum transactionType;

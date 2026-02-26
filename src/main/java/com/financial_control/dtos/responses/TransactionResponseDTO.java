@@ -1,6 +1,5 @@
 package com.financial_control.dtos.responses;
 
-import com.financial_control.entities.CategoryEntity;
 import com.financial_control.entities.enums.PaymentTypeEnum;
 import com.financial_control.entities.enums.StatusEnum;
 import com.financial_control.entities.enums.TransactionTypeEnum;
@@ -22,6 +21,7 @@ public class TransactionResponseDTO {
     private String description;
     private BigDecimal amount;
     private LocalDate transactionDate;
+    private LocalDate paymentDate;
     private PaymentTypeEnum paymentType;
     private Integer numberOfInstallments;
     private TransactionTypeEnum transactionType;
