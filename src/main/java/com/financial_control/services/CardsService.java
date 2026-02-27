@@ -2,7 +2,9 @@ package com.financial_control.services;
 
 import com.financial_control.dtos.requests.CardsRequestDTO;
 import com.financial_control.dtos.responses.CardsResponseDTO;
+import com.financial_control.entities.CardsEntity;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface CardsService {
@@ -12,6 +14,6 @@ public interface CardsService {
     List<CardsResponseDTO> findAllCards();
     CardsResponseDTO findCardById(Long id);
     void deleteCard(Long id);
-
+    LocalDate calculatePaymentDate(CardsEntity card, LocalDate transactionDate);
 
 }

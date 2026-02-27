@@ -10,6 +10,7 @@ import com.financial_control.services.CardsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -72,7 +73,6 @@ public class CardsServiceImpl implements CardsService {
 
     }
 
-
     @Override
     public void deleteCard(Long id) {
         UserEntity user = authorizationService.getAuthenticatedUser();
@@ -82,6 +82,18 @@ public class CardsServiceImpl implements CardsService {
 
         cardsRepository.delete(cardsEntity);
 
+    }
+
+    @Override
+    public LocalDate calculatePaymentDate(CardsEntity card, LocalDate transactionDate) {
+        int closingDay = card.getClosingDay();
+        int dueDay = card.getDueDay();
+
+        if (transactionDate.getDayOfMonth() <= closingDay) {
+            return transactionDate.withDayOfMonth(dueDay);
+        } else {
+            return transactionDate.plusMonths(1).withDayOfMonth(dueDay);
+        }
     }
 
 }
